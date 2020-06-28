@@ -1,6 +1,6 @@
 <?php
 
-$target_url='https://www.shutterstock.com/';
+$target_url='http://url goes here';
 
 //curl session initialization
 
@@ -20,14 +20,7 @@ $pattern='/<img[^>]+/';
 $matches='';//using this variable we will store refined data
 
 preg_match_all($pattern,$source_code,$matches);
-/*echo '<pre>';
-if (sizeof($matches)>1) {
-	echo "nopeees";
-}
-else
-{
-print_r($matches);
-}
+
 
 if (!is_dir('downloads')) {
 	
@@ -38,10 +31,9 @@ if (!is_dir('downloads')) {
 
 	$file=fopen('downloads/scrapped.txt','w');
 	foreach ($matches[0] as  $img) {
-		if(fwrite($file,$img)===false){
-			echo "string";
+		fwrite($file,$img);
 		}
-	}*/
+	
 	$pattern='/src="([^"]+)/';
 	$sr=file_get_contents('downloads/scrapped.txt');
 	preg_match_all($pattern,$sr, $matches);
